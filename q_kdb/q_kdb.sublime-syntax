@@ -1,0 +1,13 @@
+%YAML 1.2
+---
+name: q kdb
+file_extensions:
+  - q
+scope: source.q
+
+contexts:
+  main:
+
+    - match: test
+      scope: other.source.q
+
