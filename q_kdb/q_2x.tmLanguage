@@ -7,7 +7,7 @@
 		<string>q</string>
 	</array>
 	<key>name</key>
-	<string>q/kdb</string>
+	<string>q/kdb 2.x</string>
 	<key>patterns</key>
 	<array>
 		<!-- Comments -->
