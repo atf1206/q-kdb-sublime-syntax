@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>q</string>
+	</array>
+	<key>name</key>
+	<string>q/kdb 2.x</string>
+	<key>patterns</key>
+	<array>
+		<!-- Comments -->
+		<dict>
+			<key>comment</key>
+			<string>block comment</string>
+			<key>name</key>
+			<string>comment.block.source.q</string>
+			<key>begin</key>
+			<string>^\s*/\s*$\n</string>
+			<key>end</key>
+			<string>^\s*\\\s*$\n</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>single line comment</string>
+			<key>name</key>
+			<string>comment.line.source.q</string>
+			<key>match</key>
+			<string>\s/.+$\n?|^/.+$\n</string>
+		</dict>
+<!-- 		<dict>
+			<key>begin</key>
+			<string>\\\n</string>
+			<key>comment</key>
+			<string>string</string>
+			<key>end</key>
+			<string>\\\n</string>
+			<key>name</key>
+			<string>comment.block.source.q</string>
+		</dict> -->
+
+		<!-- Strings -->
+		<dict>
+			<key>comment</key>
+			<string>string</string>
+			<key>name</key>
+			<string>string.quoted.string.source.q</string>
+			<key>begin</key>
+			<string>"</string>
+			<key>end</key>
+			<string>"</string>
+			<key>patterns</key>
+			<array>
+				<!-- special escape characters -->
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+					<key>match</key>
+					<string>\\[trn\\\"]</string>
+				</dict>
+				<!-- escaped 3 digit numbers in strings (unicode) -->
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+					<key>match</key>
+					<string>\\[0-9]{3}</string>
+				</dict>
+				<!-- alert on escaped 1 or 2 digit numbers -->
+				<dict>
+					<key>name</key>
+					<string>message.error.q</string>
+					<key>match</key>
+					<string>\\[0-9]{1,2}</string>
+				</dict>
+			</array>
+		</dict>
+
+		<!-- Symbols -->
+		<dict>
+			<key>comment</key>
+			<string>string</string>
+			<key>match</key>
+			<string>`[:/a-zA-Z0-9_.]+</string>
+			<key>name</key>
+			<string>string.interpolated.symbol.source.q</string>
+		</dict>
+
+		<!-- built-in namespaces -->
+		<dict>
+			<key>comment</key>
+			<string>q Reserved Functions</string>
+			<key>name</key>
+			<string>support.function.q</string>
+			<key>match</key>
+			<string>\.[qQhkoz]\.\w+</string>
+		</dict>
+
+		<!-- variable assignment -->
+		<dict>
+			<key>comment</key>
+			<string>Variable Definition</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=([^a-zA-Z0-9]|\b))(\.?[a-zA-Z]+[a-zA-Z0-9_\.]*\s*)(::|:)\s*</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.complex.source.q</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>support.function.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+<!-- 		<dict>
+			<key>comment</key>
+			<string>q adverbs and shortcut</string>
+			<key>match</key>
+			<string>[!$@\\/_#?|',`(\\:)]</string>
+			<key>name</key>
+			<string>support.function.q</string>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>dot notation</string>
+			<key>match</key>
+			<string>\.(?=\W)</string>
+			<key>name</key>
+			<string>support.function.q</string>
+		</dict> -->
+
+		<!-- functions and function arguments -->
+		<dict>
+			<key>contentName</key>
+			<string>meta.function.parameters.q</string>
+			<key>begin</key>
+			<string>(\{\s*\[)</string>
+			<key>end</key>
+			<string>]</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b([a-zA-Z_][a-zA-Z0-9_]*)\s*(?:(;)|(?=[\]\)]))</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.other.inherited-class.q</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.separator.parameters.q</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
+
+		<!-- q reserved words -->
+		<dict>
+			<key>comment</key>
+			<string>q keywords</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))(abs|acos|aj|aj0|all|and|any|asc|asin|asof|atan|attr|avg|avgs|bin|binr|by|ceiling|cols|cor|cos|count|cov|cross|csv|cut|delete|deltas|desc|dev|differ|distinct|div|do|dsave|each|ej|ema|enlist|eval|except|exec|exit|exp|fby|fills|first|fkeys|flip|floor|from|get|getenv|group|gtime|hclose|hcount|hdel|hopen|hsym|iasc|idesc|if|ij|ijf|in|insert|inter|inv|key|keys|last|like|lj|ljf|load|log|lower|lsq|ltime|ltrim|mavg|max|maxs|mcount|md5|mdev|med|meta|min|mins|mmax|mmin|mmu|mod|msum|neg|next|not|null|or|over|parse|peach|pj|prd|prds|prev|prior|rand|rank|ratios|raze|read0|read1|reciprocal|reval|reverse|rload|rotate|rsave|rtrim|save|scan|scov|sdev|select|set|setenv|show|signum|sin|sqrt|ss|ssr|string|sublist|sum|sums|sv|svar|system|tables|tan|til|trim|type|uj|ujf|ungroup|union|update|upper|upsert|value|var|view|views|vs|wavg|where|while|within|wj|wj1|wsum|xasc|xbar|xcol|xcols|xdesc|xexp|xgroup|xkey|xlog|xprev|xrank)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.other.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<!-- datetime and timestamp -->
+		<dict>
+			<key>comment</key>
+			<string>datetime and timestamp</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))([0-9]{4}\.[0-9]{2}\.[0-9]{2}[TD]?[0-9]{2}:[0-9]{2}:[0-9]{2}(:[0-9]{2})?(\.[0-9]{3,6})?)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<!-- time -->
+		<dict>
+			<key>comment</key>
+			<string>time</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))([0-9]{4}\.[0-9]{2}\.[0-9]{2}[TD]?)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<!-- date -->
+		<dict>
+			<key>comment</key>
+			<string>date</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))([0-9]{2}:[0-9]{2}:[0-9]{2}(:[0-9]{2})?(\.[0-9]{3,6})?)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+		<!-- boolean, short, int, long, float, real -->
+		<dict>
+			<key>comment</key>
+			<string>boolean, short, int, long, float, real</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))([-]?[0-9]+[bhijfe]{0,1}(\.[0-9]+[m]?)?|0x[a-f0-9]+)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+	</array>
+
+	<key>scopeName</key>
+	<string>source.q</string>
+	<key>uuid</key>
+	<string>ef19f88f-c8f2-4877-a39b-68259fdd0ded</string>
+</dict>
+</plist>
