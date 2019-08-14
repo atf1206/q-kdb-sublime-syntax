@@ -77,14 +77,14 @@
 			</array>
 		</dict>
 
-		<!-- Symbols (11) -->
+		<!-- Symbols (11) and handles -->
 		<dict>
 			<key>comment</key>
 			<string>symbol</string>
 			<key>name</key>
 			<string>string.interpolated.symbol.q</string>
 			<key>match</key>
-			<string>`[:a-zA-Z0-9_.]*</string>
+			<string>(`:[:/a-zA-Z0-9_.]*)|(`[:a-zA-Z0-9_.]*)</string>
 		</dict>
 
 		<!-- namespace + dictionary assignment -->
@@ -374,7 +374,7 @@
 			<key>name</key>
 			<string>support.function.io.q</string>
 			<key>match</key>
-			<string>0:|1:</string>
+			<string>0:|1:|2:</string>
 		</dict>
 
 		<!-- boolean (binary) (1), byte (4), short (5), int (6), long (7), float (9) -->
@@ -384,7 +384,7 @@
 			<key>name</key>
 			<string>constant.numeric.complex.q</string>
 			<key>match</key>
-			<string>(?=(\W|\b))([-]?[0-9]+[bhijf]?(\.[0-9]+[m]?)?|0x[a-f0-9]+)(?=(\W|\b)|_)</string>
+			<string>(?=(\W|\b))([-]?[0-9]+[bhijf]?(\.[0-9]+[m]?)?|0x[a-fA-F0-9]+)(?=(\W|\b)|_)</string>
 		</dict>
 
 		<!-- real (8) -->
