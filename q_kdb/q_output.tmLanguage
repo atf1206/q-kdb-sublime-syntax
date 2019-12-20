@@ -57,6 +57,7 @@
 					<string>punctuation.section.header.end.q_output</string>
 				</dict>
 			</dict>
+
 			<!-- <key>name</key>
 			<string>meta.header.q_output</string>
 			<key>patterns</key>
@@ -68,7 +69,7 @@
 			</array> -->
 		</dict>
 
-		<dict>
+<!-- 		<dict>
 			<key>begin</key>
 			<string>(?&lt;=%})\s*$</string>
 			<key>end</key>
@@ -86,9 +87,11 @@
 					<string>#declaration-matches</string>
 				</dict>
 			</array>
-		</dict>
+		</dict> -->
 
-		<dict>
+<!-- 		<dict>
+			<key>name</key>
+			<string>meta.rules.q_output</string>
 			<key>begin</key>
 			<string>(%%)\s*$</string>
 			<key>beginCaptures</key>
@@ -109,8 +112,6 @@
 					<string>punctuation.section.rules.end.q_output</string>
 				</dict>
 			</dict>
-			<key>name</key>
-			<string>meta.rules.q_output</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -122,12 +123,29 @@
 					<string>#rules</string>
 				</dict>
 			</array>
-		</dict>
+		</dict> -->
 
 		<dict>
+			<key>comment</key>
+			<string>datetime and timestamp</string>
+			<key>name</key>
+			<string>other.source.q</string>
+			<key>match</key>
+			<string>(?=(\W|\b))([0-9]{4}\.[0-9]{2}\.[0-9]{2}[TD]?[0-9]{2}:[0-9]{2}:[0-9]{2}(:[0-9]{2})?(\.[0-9]{3,6})?)(?=(\W|\b))</string>
+			<key>captures</key>
+			<dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>constant.numeric.complex.source.q</string>
+				</dict>
+			</dict>
+		</dict>
+
+<!-- 		<dict>
 			<key>include</key>
 			<string>source.ocaml</string>
-		</dict>
+		</dict> -->
 
 		<dict>
 			<key>include</key>
