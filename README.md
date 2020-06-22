@@ -5,7 +5,7 @@ q/kdb syntax parsing/highlighting
 * can be used with text editors (Sublime, others), IDEs, github, etc.
 
 ## Details
-This version stays largely faithful to the current [sublime-q](https://github.com/komsit37/sublime-q) syntax highlighting by [kimtang](https://github.com/kimtang/sublime-q), with updates and fixes:
+This version continues the spirit of the current [sublime-q](https://github.com/komsit37/sublime-q) syntax highlighting by [kimtang](https://github.com/kimtang/sublime-q), revamped with many updates and fixes:
 
 * Parses numbers better, including reals;
 * Supports all nulls and infinities;
@@ -16,10 +16,15 @@ This version stays largely faithful to the current [sublime-q](https://github.co
 * Updates the list of reserved words;
 * Still uses the reversed function-definition/function-argument highlighting that you know and love;
 * Does **not** highlight all your parentheses;
-* Highlights view/global assign ('::') like assign (':');
-* Speaking of assignment, now highlights compound assignments (such as '+:' and ',:') and dictionary assignments ('dict\[`key\]:value');
-* Not only highlights all date and time varieties, but also flags them as contexts under the hood (for example, in Sublime you can use ctrl+shift+p to view the context of your cursor -- handy for qbies);
-* Highlights IO functions ('0:' '1:' and '2:');
+* Highlights view/global assign ("::") like assign (":");
+* Also now highlights compound assignments (such as "+:" and ",:") and dictionary/list assignments ("dict\[`key\]:value" or "list\[index\]:value");
+* Not only highlights all date and time varieties, but also flags their contexts under the hood (for example, in Sublime use ctrl+alt+shift+p (Windows and Linux) or control+shift+p (OSX) to view the context of your cursor -- handy for qbies);
+* Highlights IO functions ("0:" "1:" and "2:");
 * (Slightly) improves k language and q-output highlighting;
 * Also (slightly) improves namespace and built-in namespace highlighting;
 * And more!
+
+## Useful Links
+* https://www.sublimetext.com/docs/3/syntax.html
+* https://github.com/kkos/oniguruma/blob/master/doc/RE
+* https://raw.githubusercontent.com/kkos/oniguruma/5.9.6/doc/RE
