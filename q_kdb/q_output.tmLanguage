@@ -51,7 +51,7 @@
 			<string>source.q</string>
 		</dict>
 
-		<!-- If dashed line (sometimes with | for keyed table), then use table formatting (akak ocaml, as in original sublime q syntax) -->
+		<!-- If dashed line (sometimes with | for keyed table), then use table formatting (aka ocaml, as in original sublime q syntax) -->
 		<dict>
 			<key>begin</key>
 			<string>^(-+(\| -+)?)\n</string>
@@ -78,7 +78,7 @@
 				</dict>
 			</array>
 			<key>end</key>
-			<string>'the road goes on forever and this pattern never ends'</string>
+			<string>'the road goes on forever and the pattern never ends'</string>
 			<!-- <key>endCaptures</key> -->
 		</dict>
 
